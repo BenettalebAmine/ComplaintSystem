@@ -37,4 +37,10 @@ public class ComplaintService {
     }
 
 
+    public List<Complaint> getAllComplaints() {
+       return complaintRepository.findAll();
+    }
+    public Complaint getComplaint(long complaintId) {
+        return complaintRepository.findById(complaintId).orElse(null);
+    }
 }
