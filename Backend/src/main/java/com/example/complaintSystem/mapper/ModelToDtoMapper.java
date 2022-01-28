@@ -1,7 +1,9 @@
 package com.example.complaintSystem.mapper;
 
 import com.example.complaintSystem.Model.Complaint;
+import com.example.complaintSystem.Model.Util.Picture;
 import com.example.complaintSystem.dto.ComplaintLocationDTO;
+import com.example.complaintSystem.dto.PictureDto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,5 +26,18 @@ public class ModelToDtoMapper {
                 .collect(Collectors.toList());
 
         return  complaintLocationDTOList;
+    }
+
+    public  static List<PictureDto> mapAllToPictureDto(List<Picture> pictures){
+
+        List<PictureDto> pictureDtos;
+
+        pictureDtos=
+                pictures
+                        .stream()
+                        .map( picture ->  new PictureDto(picture.getId(),picture.getDate(),picture.getData(),picture.isStatus(), picture.getDeviceId() ) )
+                        .collect(Collectors.toList());
+
+        return  pictureDtos;
     }
 }
