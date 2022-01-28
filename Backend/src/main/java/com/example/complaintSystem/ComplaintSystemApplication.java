@@ -6,8 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class ComplaintSystemApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(ComplaintSystemApplication.class, args);
-    }
-
+  public static void main(String[] args) {
+    SpringApplication.run(ComplaintSystemApplication.class, args);
+  }
 }
