@@ -17,6 +17,7 @@ public class ComplaintSystemApplication implements CommandLineRunner {
     @Autowired
     private ComplaintRepository complaintRepository;
 
+
     public static void main(String[] args) {
 
         SpringApplication.run(ComplaintSystemApplication.class, args);
@@ -29,4 +30,5 @@ public class ComplaintSystemApplication implements CommandLineRunner {
 
        complaintRepository.save(complaint);*/
     }
+
 }

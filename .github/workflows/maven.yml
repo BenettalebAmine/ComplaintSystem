@@ -23,8 +23,8 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      working-directory: ./backend
+      working-directory: Backend
       run: mvn -B package --file pom.xml
     - name: Spotless Apply
-      working-directory: ./backend
+      working-directory: Backend
       run: mvn spotless:apply

@@ -1,4 +1,4 @@
-package com.example.complaintSystem.controllers;
+package com.example.complaintSystem.Controller;
 
 
 import com.example.complaintSystem.service.ComplaintService;
