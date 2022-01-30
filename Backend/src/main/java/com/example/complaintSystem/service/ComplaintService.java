@@ -26,6 +26,11 @@ public class ComplaintService {
 
 
 
+    public void addComplaint(Complaint complaint){
+
+        complaintRepository.save(complaint);
+    }
+
     public void updateComplaint(long complaintId){
 
         complaintRepository.incrementComplaintResolutionCounter(complaintId);

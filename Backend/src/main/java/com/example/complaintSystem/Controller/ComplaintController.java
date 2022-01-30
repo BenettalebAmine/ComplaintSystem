@@ -6,10 +6,7 @@ import com.example.complaintSystem.dto.ComplaintLocationDTO;
 import com.example.complaintSystem.dto.PictureDto;
 import com.example.complaintSystem.service.ComplaintService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,6 +21,13 @@ public class ComplaintController {
     }
 
 
+
+    @PostMapping("/addComplaint")
+    public ResponseEntity<String> updateComplaint(@RequestBody Complaint complaint){
+
+        complaintService.addComplaint(complaint);
+        return ResponseEntity.ok("Complaint added successfully");
+    }
 
     @PutMapping("/updateComplaint/{complaintId}")
     public ResponseEntity<String> updateComplaint(@PathVariable(name = "complaintId") long complaintId){
