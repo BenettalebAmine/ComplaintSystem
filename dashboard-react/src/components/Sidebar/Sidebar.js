@@ -38,18 +38,18 @@ function Sidebar({ color, image, routes }) {
       <div className="sidebar-wrapper">
         <div className="logo d-flex align-items-center justify-content-start">
           <a
-            href="https://www.creative-tim.com?ref=lbd-sidebar"
+            href="admin/dashboard"
             className="simple-text logo-mini mx-1"
           >
             <div className="logo-img">
               <img
-                src={require("assets/img/reactlogo.png").default}
+                src={require("assets/img/logo.png").default}
                 alt="..."
               />
             </div>
           </a>
-          <a className="simple-text" href="http://www.creative-tim.com">
-            Complaint System
+          <a className="simple-text" href="admin/dashboard">
+             complaint system
           </a>
         </div>
         <Nav>
