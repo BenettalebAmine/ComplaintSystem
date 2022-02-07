@@ -17,7 +17,7 @@ public class PicturesService {
     @Autowired
     private PictureRepository pictureRepository;
     @Autowired
-    private  ComplaintService complaintService;
+    private com.example.complaintSystem.service.ComplaintService complaintService;
 
     public void UpdatePicture(long id,boolean status){
         Picture pic = pictureRepository.getById(id);
@@ -28,5 +28,10 @@ public class PicturesService {
     public List<PictureDto> getComplaintPictures(long complaintId) {
        Optional<Complaint>  complaint= complaintService.findById(complaintId);
         return complaint.map(value -> ModelToDtoMapper.mapAllToPictureDto(pictureRepository.findByComplaint(value))).orElse(null);
+    }
+
+    public Integer getPicturesCount() {
+        //TO-DO IMPLIMENT THIS FUNCTION
+        return 17;
     }
 }

@@ -30,13 +30,13 @@ public class ComplaintSystemApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Complaint complaint=new Complaint(LocalDateTime.now(), ComplaintType.DECHETS,false,0,0,0,0);
+    /*    Complaint complaint=new Complaint(LocalDateTime.now(), ComplaintType.DECHETS,false,0,0,0,0);
 
        complaintRepository.save(complaint);
         Picture picture1=new Picture( LocalDateTime.now(), complaint, new Byte[]{0,0,0,0,0,0,0,0,0}, false, "RND deviceId" );
         Picture picture2=new Picture( LocalDateTime.now(), complaint, new Byte[]{1,1,1,0,0,0,0,0,0}, false, "RND deviceId22" );
         pictureRepository.save(picture1);
         pictureRepository.save(picture2);
-    }
+    */}
 
 }

@@ -27,4 +27,10 @@ public class PictureController {
 
         return  ResponseEntity.ok().body( picturesService.getComplaintPictures(complaintId) );
     }
-}
+    @GetMapping("/getPicturesCount")
+    public ResponseEntity<Integer> getPicturesCount() {
+
+        return ResponseEntity.ok().body( picturesService.getPicturesCount());
+
+    }
+    }
