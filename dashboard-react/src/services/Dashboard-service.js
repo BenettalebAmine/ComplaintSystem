@@ -1,7 +1,7 @@
 import axios from 'axios';
-const API_URL = "http://localhost:8081"
+import {picturesCount_API_URL} from '../utils/urls'
 const picturesCount = () => {
-    return axios.get(API_URL+"/getPicturesCount")
+    return axios.get(picturesCount_API_URL+"/getPicturesCount")
 }
 export default { picturesCount }
   
