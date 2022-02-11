@@ -18,7 +18,7 @@
 import React, { Component } from "react";
 import { useLocation } from "react-router-dom";
 import { Navbar, Container, Nav, Dropdown, Button } from "react-bootstrap";
-
+import { Link } from "react-router-dom";
 import routes from "routes.js";
 
 function Header() {
@@ -195,7 +195,8 @@ function Header() {
             <Nav.Item>
               <Nav.Link
                 className="m-0"
-                href="#pablo"
+                href="/auth/login"
+                to="/auth/login"
                 onClick={(e) => e.preventDefault()}
               >
                 <span className="no-icon">Log out</span>

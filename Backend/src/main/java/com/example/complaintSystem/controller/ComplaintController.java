@@ -1,15 +1,14 @@
-package com.example.complaintSystem.Controller;
+package com.example.complaintSystem.controller;
 
 
-import com.example.complaintSystem.Model.Complaint;
+import com.example.complaintSystem.model.Complaint;
 import com.example.complaintSystem.dto.ComplaintLocationDTO;
-import com.example.complaintSystem.dto.PictureDto;
 import com.example.complaintSystem.service.ComplaintService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin
 @RestController
 public class ComplaintController {
 

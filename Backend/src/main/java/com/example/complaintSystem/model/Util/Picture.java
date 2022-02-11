@@ -1,6 +1,6 @@
-package com.example.complaintSystem.Model.Util;
+package com.example.complaintSystem.model.Util;
 
-import com.example.complaintSystem.Model.Complaint;
+import com.example.complaintSystem.model.Complaint;
 import java.time.LocalDateTime;
 import javax.persistence.*;
 import lombok.AllArgsConstructor;

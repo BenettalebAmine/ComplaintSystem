@@ -1,4 +1,4 @@
-package com.example.complaintSystem.Controller;
+package com.example.complaintSystem.controller;
 
 import com.example.complaintSystem.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;

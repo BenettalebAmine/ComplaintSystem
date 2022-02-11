@@ -1,4 +1,4 @@
-package com.example.complaintSystem.Model.Util;
+package com.example.complaintSystem.model.Util;
 
 public enum ComplaintType {
   EAU,

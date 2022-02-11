@@ -1,22 +1,29 @@
 package com.example.complaintSystem.dto;
 
 
+import com.example.complaintSystem.model.Util.ComplaintType;
 
 public final class ComplaintLocationDTO {
 
-    private long latitude;
-    private long longitude;
+    private double latitude;
+    private double longitude;
+    private ComplaintType complaintType;
 
-    public ComplaintLocationDTO(long latitude, long longitude) {
+    public ComplaintLocationDTO(double latitude, double longitude,ComplaintType complaintType) {
         this.latitude = latitude;
         this.longitude = longitude;
+        this.complaintType=complaintType;
     }
 
-    public long getLatitude() {
+    public double getLatitude() {
         return latitude;
     }
 
-    public long getLongitude() {
+    public double getLongitude() {
         return longitude;
+    }
+
+    public ComplaintType getComplaintType() {
+        return complaintType;
     }
 }

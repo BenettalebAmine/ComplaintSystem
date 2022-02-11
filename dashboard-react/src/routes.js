@@ -23,7 +23,7 @@ import Icons from "views/Icons.js";
 import Maps from "views/Maps.js";
 import Notifications from "views/Notifications.js";
 import Upgrade from "views/Upgrade.js";
-
+import SignInSide from "views/SignInSide";
 const dashboardRoutes = [
   // {
   //   upgrade: true,
@@ -61,13 +61,13 @@ const dashboardRoutes = [
   //   component: Typography,
   //   layout: "/admin",
   // },
-  // {
-  //   path: "/icons",
-  //   name: "Icons",
-  //   icon: "nc-icon nc-atom",
-  //   component: Icons,
-  //   layout: "/admin",
-  // },
+   {
+    path: "/login",
+    name: "login",
+    icon: "nc-icon nc-atom",
+    component: SignInSide,
+    layout: "/auth",
+  },
   {
     path: "/maps",
     name: "Maps",

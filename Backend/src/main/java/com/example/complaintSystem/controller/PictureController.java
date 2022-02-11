@@ -1,4 +1,4 @@
-package com.example.complaintSystem.Controller;
+package com.example.complaintSystem.controller;
 
 import com.example.complaintSystem.dto.PictureDto;
 import com.example.complaintSystem.service.PicturesService;

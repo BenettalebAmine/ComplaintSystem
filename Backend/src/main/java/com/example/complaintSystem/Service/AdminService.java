@@ -1,7 +1,7 @@
 package com.example.complaintSystem.service;
 
-import com.example.complaintSystem.Model.Admin;
-import com.example.complaintSystem.Repository.AdminRepository;
+import com.example.complaintSystem.model.Admin;
+import com.example.complaintSystem.repository.AdminRepository;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -15,12 +15,12 @@ import {
   OverlayTrigger,
   Tooltip,
 } from "react-bootstrap";
-import picturesCount from "../services/Dashboard-service"
+import {picturesCount} from "../services/Dashboard-service"
 
 function Dashboard() {
   const [count, setCount]= useState({v:null});
   useEffect(() => {
-    picturesCount.picturesCount().then(r => {
+    picturesCount().then(r => {
         setCount({v : r.data});
       })  
   },[]);

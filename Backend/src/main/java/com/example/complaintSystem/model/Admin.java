@@ -1,4 +1,4 @@
-package com.example.complaintSystem.Model;
+package com.example.complaintSystem.model;
 
 import javax.persistence.*;
 import lombok.AllArgsConstructor;
