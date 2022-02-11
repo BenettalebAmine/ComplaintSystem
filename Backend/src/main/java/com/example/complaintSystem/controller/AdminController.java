@@ -1,5 +1,6 @@
 package com.example.complaintSystem.controller;
 
+import com.example.complaintSystem.model.Admin;
 import com.example.complaintSystem.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -19,5 +20,11 @@ public class AdminController {
       @RequestParam String fullname, @RequestParam String email, @RequestParam String password)
       throws Exception {
     adminService.createAdmin(fullname, email, password);
+  }
+  @PostMapping("/signIn")
+  public Admin signInAdmin(
+           @RequestParam String email, @RequestParam String password)
+          throws Exception {
+     return   adminService.signInAdmin(email, password);
   }
 }

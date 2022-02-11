@@ -35,10 +35,14 @@ ReactDOM.render(
   
   <BrowserRouter>
     <Switch>
-      <Route path="/admin" render={(props) => <AdminLayout {...props} />} />
-      <Route path="/auth/login" element={<Auth/>} />
-      <Redirect from="/" to="admin/dashboard" />
+      <Route  path="/admin" render={(props) => <AdminLayout {...props} />} />
+      {/* <Route exact path="auth/" render={(props) => <Auth {...props} />} /> */}
+      <Route exact path="/auth/login" >
+        <SignInSide></SignInSide>
+      </Route>
+      <Redirect from="/" to="/auth/login" />
     </Switch>
-  </BrowserRouter>,
+  </BrowserRouter>
+  ,
   document.getElementById("root")
 );
