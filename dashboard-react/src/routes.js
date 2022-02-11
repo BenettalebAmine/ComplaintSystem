@@ -61,13 +61,13 @@ const dashboardRoutes = [
   //   component: Typography,
   //   layout: "/admin",
   // },
-   {
-    path: "/login",
-    name: "login",
-    icon: "nc-icon nc-atom",
-    component: SignInSide,
-    layout: "/auth",
-  },
+  //  {
+  //   path: "/login",
+  //   name: "login",
+  //   icon: "nc-icon nc-atom",
+  //   component: SignInSide,
+  //   layout: "/auth",
+  // },
   {
     path: "/maps",
     name: "Maps",

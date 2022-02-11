@@ -12,32 +12,46 @@ import Grid from '@mui/material/Grid';
 //import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { signInAdmin } from 'services/Dashboard-service';
+import { createBrowserHistory } from 'history'
+import { useHistory } from 'react-router';
+//do something...
 
-function Copyright(props) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+
 
 const theme = createTheme();
 
 export default function SignInSide() {
+
+  const history=useHistory();
+
+
+
+
+
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     // eslint-disable-next-line no-console
-    console.log({
+    const credentials={
       email: data.get('email'),
       password: data.get('password'),
-    });
+    };
+    console.log(credentials);
+    signInAdmin(credentials)
+    .then( response =>{
+      console.log(response.data);
+      sessionStorage.setItem('token', JSON.stringify(response.data));
+      history.push("/admin/dashboard"); 
+    } )
+    .catch(error =>{
+      console.log(error);
+    } )
+
   };
+
+ 
 
   return (
     <ThemeProvider theme={theme}>
@@ -118,7 +132,6 @@ export default function SignInSide() {
                   </Link>
                 </Grid>
               </Grid>
-              <Copyright sx={{ mt: 5 }} />
             </Box>
           </Box>
         </Grid>
