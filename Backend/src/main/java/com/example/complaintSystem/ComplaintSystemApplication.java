@@ -1,17 +1,11 @@
 package com.example.complaintSystem;
 
-import com.example.complaintSystem.Model.Complaint;
-import com.example.complaintSystem.Model.Util.ComplaintType;
-import com.example.complaintSystem.Model.Util.Picture;
-import com.example.complaintSystem.Repository.ComplaintRepository;
-import com.example.complaintSystem.Repository.PictureRepository;
+import com.example.complaintSystem.repository.ComplaintRepository;
+import com.example.complaintSystem.repository.PictureRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import java.time.LocalDateTime;
-import java.util.Date;
 
 @SpringBootApplication
 public class ComplaintSystemApplication implements CommandLineRunner {

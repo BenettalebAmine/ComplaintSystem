@@ -1,14 +1,11 @@
-package com.example.complaintSystem.Repository;
+package com.example.complaintSystem.repository;
 
-import com.example.complaintSystem.Model.Complaint;
-import com.example.complaintSystem.dto.ComplaintLocationDTO;
+import com.example.complaintSystem.model.Complaint;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 @Repository
 public interface ComplaintRepository extends JpaRepository<Complaint,Long> {

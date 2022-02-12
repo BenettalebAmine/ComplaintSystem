@@ -26,15 +26,14 @@ import routes from "routes.js";
 
 import sidebarImage from "assets/img/sidebar-3.jpg";
 
-function Admin() {
-  const [image, setImage] = React.useState(sidebarImage);
-  const [color, setColor] = React.useState("black");
-  const [hasImage, setHasImage] = React.useState(true);
-  const location = useLocation();
-  const mainPanel = React.useRef(null);
+function Auth() {
+ 
+ // const location = useLocation();
+  //const mainPanel = React.useRef(null);
   const getRoutes = (routes) => {
     return routes.map((prop, key) => {
-      if (prop.layout === "/admin") {
+      if (prop.layout === "/auth") {
+        console.log(prop);
         return (
           <Route
             path={prop.layout + prop.path}
@@ -47,33 +46,31 @@ function Admin() {
       }
     });
   };
-  React.useEffect(() => {
-    document.documentElement.scrollTop = 0;
-    document.scrollingElement.scrollTop = 0;
-    mainPanel.current.scrollTop = 0;
-    if (
-      window.innerWidth < 993 &&
-      document.documentElement.className.indexOf("nav-open") !== -1
-    ) {
-      document.documentElement.classList.toggle("nav-open");
-      var element = document.getElementById("bodyClick");
-      element.parentNode.removeChild(element);
-    }
-  }, [location]);
+  // React.useEffect(() => {
+  //   document.documentElement.scrollTop = 0;
+  //   document.scrollingElement.scrollTop = 0;
+  //   mainPanel.current.scrollTop = 0;
+  //   if (
+  //     window.innerWidth < 993 &&
+  //     document.documentElement.className.indexOf("nav-open") !== -1
+  //   ) {
+  //     document.documentElement.classList.toggle("nav-open");
+  //     var element = document.getElementById("bodyClick");
+  //     element.parentNode.removeChild(element);
+  //   }
+  // }, [location]);
   return (
-    <>
-      <div className="wrapper">
-        <Sidebar color={color} image={hasImage ? image : ""} routes={routes} />
-        <div className="main-panel" ref={mainPanel}>
-          <AdminNavbar />
-          <div className="content">
+   
+      <div >
+        <div >
+        <h1>Slama</h1>
+          <div>
             <Switch>{getRoutes(routes)}</Switch>
           </div>
-          <Footer />
         </div>
       </div>
-    </>
+   
   );
 }
 
-export default Admin;
+export default Auth;

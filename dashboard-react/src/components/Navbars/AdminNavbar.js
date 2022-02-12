@@ -18,7 +18,7 @@
 import React, { Component } from "react";
 import { useLocation } from "react-router-dom";
 import { Navbar, Container, Nav, Dropdown, Button } from "react-bootstrap";
-
+import { Link } from "react-router-dom";
 import routes from "routes.js";
 
 function Header() {
@@ -196,9 +196,10 @@ function Header() {
               <Nav.Link
                 className="m-0"
                 href="#pablo"
+                to="#pablo"
                 onClick={(e) => e.preventDefault()}
               >
-                <span className="no-icon">Log out</span>
+               <Link to="/auth/login" ><span className="no-icon">Log out</span></Link> 
               </Nav.Link>
             </Nav.Item>
           </Nav>

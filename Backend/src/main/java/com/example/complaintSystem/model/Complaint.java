@@ -1,6 +1,6 @@
-package com.example.complaintSystem.Model;
+package com.example.complaintSystem.model;
 
-import com.example.complaintSystem.Model.Util.ComplaintType;
+import com.example.complaintSystem.model.Util.ComplaintType;
 import java.time.LocalDateTime;
 import javax.persistence.*;
 import lombok.AllArgsConstructor;
@@ -34,10 +34,10 @@ public class Complaint {
   private int complaintResolutionCounter;
 
   @Column(nullable = false)
-  private long latitude;
+  private double latitude;
 
   @Column(nullable = false)
-  private long longitude;
+  private double longitude;
 
   public Complaint(
       LocalDateTime date,

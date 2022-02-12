@@ -1,11 +1,10 @@
 package com.example.complaintSystem.mapper;
 
-import com.example.complaintSystem.Model.Complaint;
-import com.example.complaintSystem.Model.Util.Picture;
+import com.example.complaintSystem.model.Complaint;
+import com.example.complaintSystem.model.Util.Picture;
 import com.example.complaintSystem.dto.ComplaintLocationDTO;
 import com.example.complaintSystem.dto.PictureDto;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -22,7 +21,7 @@ public class ModelToDtoMapper {
         complaintLocationDTOList=
                 complaintList
                 .stream()
-                .map( complaint ->  new ComplaintLocationDTO(complaint.getLatitude(),complaint.getLongitude()) )
+                .map( complaint ->  new ComplaintLocationDTO(complaint.getLatitude(),complaint.getLongitude(),complaint.getComplaintType()) )
                 .collect(Collectors.toList());
 
         return  complaintLocationDTOList;

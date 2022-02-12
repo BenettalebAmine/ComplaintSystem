@@ -1,7 +1,19 @@
 import axios from 'axios';
-import {picturesCount_API_URL} from '../utils/urls'
+import {API_URL} from '../utils/urls'
+
+
+
 const picturesCount = () => {
-    return axios.get(picturesCount_API_URL+"/getPicturesCount")
+    return axios.get(API_URL+"/getPicturesCount")
 }
-export default { picturesCount }
+const getAllComplaintsLocation= () =>{
+
+    return axios.get(API_URL+"/getAllComplaintsLocation")
+}
+
+const signInAdmin=(credentials) =>{
+
+    return axios.post(API_URL+"/signIn?email="+credentials.email+"&password="+credentials.password)
+}
+export  { signInAdmin, picturesCount ,getAllComplaintsLocation}
   

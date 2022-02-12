@@ -1,48 +1,54 @@
 import React from "react";
 
 // react-bootstrap components
-import { Badge, Button, Navbar, Nav, Container } from "react-bootstrap";
+import { getAllComplaintsLocation } from "services/Dashboard-service";
+import mapboxgl from 'mapbox-gl'; 
+
+mapboxgl.accessToken = 'pk.eyJ1IjoieGVub3Bob2JlIiwiYSI6ImNremhvZmYzcTF5OXcydW82cWZqcTRpZnQifQ.JnfdlxArrZw1RTtbKQU4oQ';
 
 function Maps() {
-  const mapRef = React.useRef(null);
+  const mapContainer = React.useRef(null);
+  const map = React.useRef(null);
+const [lng, setLng] = React.useState(-6.8498);
+const [lat, setLat] = React.useState(33.9716);
+const [zoom, setZoom] = React.useState(20);
+
   React.useEffect(() => {
-    let google = window.google;
-    let map = mapRef.current;
-    let lat = "40.748817";
-    let lng = "-73.985428";
-    const myLatlng = new google.maps.LatLng(lat, lng);
-    const mapOptions = {
-      zoom: 13,
-      center: myLatlng,
-      scrollwheel: false,
-      zoomControl: true,
-    };
-
-    map = new google.maps.Map(map, mapOptions);
-
-    const marker = new google.maps.Marker({
-      position: myLatlng,
-      map: map,
-      animation: google.maps.Animation.DROP,
-      title: "Light Bootstrap Dashboard PRO React!",
+    if (map.current) return; // initialize map only once
+map.current = new mapboxgl.Map({
+container: mapContainer.current,
+style: 'mapbox://styles/mapbox/streets-v11',
+center: [lng, lat],
+zoom: zoom
     });
+  
 
-    const contentString =
-      '<div class="info-window-content"><h2>Light Bootstrap Dashboard PRO React</h2>' +
-      "<p>A premium Admin for React-Bootstrap, Bootstrap, React, and React Hooks.</p></div>";
 
-    const infowindow = new google.maps.InfoWindow({
-      content: contentString,
-    });
+getAllComplaintsLocation().then(r => {
 
-    google.maps.event.addListener(marker, "click", function () {
-      infowindow.open(map, marker);
-    });
+  let locations=r.data;
+  console.log(locations);
+
+  if(locations!==null){
+ 
+   // map.current.center=[locations[0].longitude, locations[0].latitude];
+
+    locations.forEach(location => {
+      let markerColor={color:'blue'};
+      if(location.complaintType==="DECHETS") markerColor={color:'black'};
+      else if(location.complaintType==="ELECTRICITE") markerColor={color:'yellow'};
+      new mapboxgl.Marker(markerColor)
+      .setLngLat([location.longitude, location.latitude])
+       .addTo(map.current);
+  });
+  }
+  
+})  
   }, []);
   return (
     <>
       <div className="map-container">
-        <div id="map" ref={mapRef}></div>
+        <div id="map" ref={mapContainer}></div>
       </div>
     </>
   );

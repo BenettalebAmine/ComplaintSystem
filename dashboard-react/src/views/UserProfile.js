@@ -14,6 +14,17 @@ import {
 } from "react-bootstrap";
 
 function User() {
+
+  const getUserName=()=> {
+    const tokenString=sessionStorage.getItem("token");
+    const userToken = JSON.parse(tokenString);
+    return userToken.fullname;
+  }
+  const getEmail=()=> {
+    const tokenString=sessionStorage.getItem("token");
+    const userToken = JSON.parse(tokenString);
+    return userToken.email;
+  }
   return (
     <>
       <Container fluid>
@@ -30,7 +41,7 @@ function User() {
                       <Form.Group>
                         <label>Company (disabled)</label>
                         <Form.Control
-                          defaultValue="Creative Code Inc."
+                          defaultValue="BODE Code Inc."
                           disabled
                           placeholder="Company"
                           type="text"
@@ -42,6 +53,7 @@ function User() {
                         <label>Username</label>
                         <Form.Control
                           defaultValue="michael23"
+                          value={getUserName()}
                           placeholder="Username"
                           type="text"
                         ></Form.Control>
@@ -55,40 +67,7 @@ function User() {
                         <Form.Control
                           placeholder="Email"
                           type="email"
-                        ></Form.Control>
-                      </Form.Group>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col className="pr-1" md="6">
-                      <Form.Group>
-                        <label>First Name</label>
-                        <Form.Control
-                          defaultValue="Mike"
-                          placeholder="Company"
-                          type="text"
-                        ></Form.Control>
-                      </Form.Group>
-                    </Col>
-                    <Col className="pl-1" md="6">
-                      <Form.Group>
-                        <label>Last Name</label>
-                        <Form.Control
-                          defaultValue="Andrew"
-                          placeholder="Last Name"
-                          type="text"
-                        ></Form.Control>
-                      </Form.Group>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col md="12">
-                      <Form.Group>
-                        <label>Address</label>
-                        <Form.Control
-                          defaultValue="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09"
-                          placeholder="Home Address"
-                          type="text"
+                          value={getEmail()}
                         ></Form.Control>
                       </Form.Group>
                     </Col>
@@ -98,7 +77,7 @@ function User() {
                       <Form.Group>
                         <label>City</label>
                         <Form.Control
-                          defaultValue="Mike"
+                          defaultValue="Rabat"
                           placeholder="City"
                           type="text"
                         ></Form.Control>
@@ -108,18 +87,9 @@ function User() {
                       <Form.Group>
                         <label>Country</label>
                         <Form.Control
-                          defaultValue="Andrew"
+                          defaultValue="Morocco"
                           placeholder="Country"
                           type="text"
-                        ></Form.Control>
-                      </Form.Group>
-                    </Col>
-                    <Col className="pl-1" md="4">
-                      <Form.Group>
-                        <label>Postal Code</label>
-                        <Form.Control
-                          placeholder="ZIP Code"
-                          type="number"
                         ></Form.Control>
                       </Form.Group>
                     </Col>
@@ -130,8 +100,7 @@ function User() {
                         <label>About Me</label>
                         <Form.Control
                           cols="80"
-                          defaultValue="Lamborghini Mercy, Your chick she so thirsty, I'm in
-                          that two seat Lambo."
+                          defaultValue="Loune dl pussy dl bitch diali be7al Raibi"
                           placeholder="Here can be your description"
                           rows="4"
                           as="textarea"
@@ -175,9 +144,7 @@ function User() {
                   <p className="description">michael24</p>
                 </div>
                 <p className="description text-center">
-                  "Lamborghini Mercy <br></br>
-                  Your chick she so thirsty <br></br>
-                  I'm in that two seat Lambo"
+                  "Loune dl pussy dl bitch diali be7al raibi  "
                 </p>
               </Card.Body>
               <hr></hr>

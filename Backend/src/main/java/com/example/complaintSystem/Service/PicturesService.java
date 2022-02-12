@@ -1,8 +1,8 @@
 package com.example.complaintSystem.service;
 
-import com.example.complaintSystem.Model.Complaint;
-import com.example.complaintSystem.Model.Util.Picture;
-import com.example.complaintSystem.Repository.PictureRepository;
+import com.example.complaintSystem.model.Complaint;
+import com.example.complaintSystem.model.Util.Picture;
+import com.example.complaintSystem.repository.PictureRepository;
 import com.example.complaintSystem.dto.PictureDto;
 import com.example.complaintSystem.mapper.ModelToDtoMapper;
 import org.springframework.beans.factory.annotation.Autowired;

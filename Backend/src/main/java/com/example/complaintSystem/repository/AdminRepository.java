@@ -1,6 +1,6 @@
-package com.example.complaintSystem.Repository;
+package com.example.complaintSystem.repository;
 
-import com.example.complaintSystem.Model.Admin;
+import com.example.complaintSystem.model.Admin;
 import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
