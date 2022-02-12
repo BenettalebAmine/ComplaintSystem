@@ -12,13 +12,13 @@ import {
   Row,
   Col,
 } from "react-bootstrap";
-import {picturesCount_API_URL} from '../utils/urls'
+import {API_URL} from '../utils/urls'
 
 function TableList() {
   const history = useHistory();
   const [complaints, setcomplaints] = useState([]);
   const fetchComplaints = () => {
-        fetch(picturesCount_API_URL+"/getAllComplaints")
+        fetch(API_URL+"/getAllComplaints")
             .then(res => res.json())
             .then(json => setcomplaints(json));
     };

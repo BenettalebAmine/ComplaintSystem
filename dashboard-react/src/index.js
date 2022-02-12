@@ -29,6 +29,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import AdminLayout from "layouts/Admin.js";
 import SignInSide from "views/SignInSide";
 import Auth from "layouts/Auth.js";
+import Pictures from "views/Pictures";
 
 
 ReactDOM.render(
@@ -36,6 +37,7 @@ ReactDOM.render(
   <BrowserRouter>
     <Switch>
       <Route  path="/admin" render={(props) => <AdminLayout {...props} />} />
+      <Route  path="/complaint/pictures" exact render={() => <Pictures/>}/>
       {/* <Route exact path="auth/" render={(props) => <Auth {...props} />} /> */}
       <Route exact path="/auth/login" >
         <SignInSide></SignInSide>

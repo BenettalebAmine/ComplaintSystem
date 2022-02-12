@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import {useLocation} from "react-router";
-import {picturesCount_API_URL} from '../utils/urls';
+import {API_URL} from '../utils/urls';
 
 function Pictures(props){
     const [complaintsPictures , setcomplaintsPictures] = useState([]);
     const location = useLocation();
     
     const fetchComplaintsPictures = () => {
-        fetch(picturesCount_API_URL+"/getComplaintPictures/"+location.state.complaint.id)
+        fetch(API_URL+"/getComplaintPictures/"+location.state.complaint.id)
             .then(res => res.json())
             .then(json => setcomplaintsPictures(json))
     };
