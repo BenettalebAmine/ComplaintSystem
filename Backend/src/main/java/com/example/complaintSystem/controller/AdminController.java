@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @Validated
-@CrossOrigin
+@CrossOrigin("*")
 public class AdminController {
   @Autowired AdminService adminService;
 
