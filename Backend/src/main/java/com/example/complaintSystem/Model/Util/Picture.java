@@ -23,14 +23,15 @@ public class Picture {
   @JoinColumn(name = "Complaint_id")
   private Complaint complaint;
 
-  @Column private Byte[] data;
+  @Column(length=10485760)
+  private String data;
 
   @Column private boolean status;
 
   @Column private String deviceId;
 
   public Picture(
-      LocalDateTime date, Complaint complaint, Byte[] data, boolean status, String deviceId) {
+      LocalDateTime date, Complaint complaint, String data, boolean status, String deviceId) {
     this.date = date;
     this.complaint = complaint;
     this.data = data;

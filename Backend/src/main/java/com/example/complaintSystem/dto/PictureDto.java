@@ -9,13 +9,13 @@ public final class PictureDto {
 
     private final LocalDateTime date;
 
-    private final Byte[] data;
+    private final String data;
 
     private boolean status;
 
     private final String deviceId;
 
-    public PictureDto(long id, LocalDateTime date, Byte[] data, boolean status, String deviceId) {
+    public PictureDto(long id, LocalDateTime date, String data, boolean status, String deviceId) {
         this.id = id;
         this.date = date;
         this.data = data;
@@ -23,7 +23,7 @@ public final class PictureDto {
         this.deviceId = deviceId;
     }
 
-    public Byte[] getData() {
+    public String getData() {
         return data;
     }
 
