@@ -96,6 +96,7 @@
   color: black;
   border: 2px solid #4caf50;
   margin-right: 50%;
+  margin-left: 15%;
 }
 
 .like-button:hover {
@@ -115,4 +116,14 @@
   color: white;
   box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
     0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+.table-hover tbody tr:hover {
+  cursor: pointer;
+  background-color: #9ed1a0;
+  color: white;
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+.Pics-compliant {
+  margin-left: 10%;
 }
