@@ -1,6 +1,7 @@
 package com.example.complaintSystem.controller;
 
 
+import com.example.complaintSystem.dto.ComplaintDTO;
 import com.example.complaintSystem.model.Complaint;
 import com.example.complaintSystem.dto.ComplaintLocationDTO;
 import com.example.complaintSystem.service.ComplaintService;
@@ -23,9 +24,9 @@ public class ComplaintController {
 
 
     @PostMapping("/addComplaint")
-    public ResponseEntity<String> updateComplaint(@RequestBody Complaint complaint){
+    public ResponseEntity<String> updateComplaint(@RequestBody ComplaintDTO complaintDTO){
 
-        complaintService.addComplaint(complaint);
+        complaintService.addComplaint(complaintDTO);
         return ResponseEntity.ok("Complaint added successfully");
     }
 
