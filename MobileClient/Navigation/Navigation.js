@@ -5,6 +5,7 @@ import {MainMenu} from "../views/MainMenu";
 import {DeclareComplaint} from "../views/DeclareComplaint";
 import {CameraView} from "../views/CameraView";
 import {Camera} from "../components/Camera";
+import {History} from "../views/History";
 
 export const Navigation = () => {
 
@@ -22,12 +23,17 @@ export const Navigation = () => {
                 <Stack.Screen
                     name={"DeclareComplaint"}
                     component={DeclareComplaint}
-                    options={{title: "DECLARE COMPLAINT"}}
+                    options={{title: "DECLARE COMPLAINT", headerShown: false}}
                 />
                 <Stack.Screen
                     name={"CameraView"}
                     component={Camera}
-                    options={{title: "Camera"}}
+                    options={{title: "Camera", headerShown: false}}
+                />
+                <Stack.Screen
+                    name={"History"}
+                    component={History}
+                    options={{title: "History", headerShown: false}}
                 />
             </Stack.Navigator>
         </NavigationContainer>

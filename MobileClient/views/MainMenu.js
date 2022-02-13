@@ -45,8 +45,7 @@ export const MainMenu = ({navigation}) => {
     }
 
     const viewHistory = () => {
-        //TODO go to history page
-        console.log("HISTORY")
+        navigation.navigate('History')
     }
     return (
 
@@ -54,21 +53,21 @@ export const MainMenu = ({navigation}) => {
             <Text style={styles.title}>COMPLAINTS SYSTEM</Text>
             <Image
                 style = {{width: 175, height: 175}}
-                source = {require('../logo.png')}
+                source = {require('../Assets/logo.png')}
             />
             {/*<img src = ""/>*/}
-            <View style={{width:350, height: 400, padding: 20}}>
+            <View style={{width:350, height: 400, padding: 20, marginTop: 50}}>
                 <TouchableOpacity style={styles.button} onPress={declareComplaint} title = {"DECLARE COMPLAINT"}>
                     <Text style={styles.buttonText}>
                         DECLARE COMPLAINT
                     </Text>
                 </TouchableOpacity>
                 <View style={{flex:0.1}}/>
-                <TouchableOpacity style={styles.button} onPress={viewMap} title = {"VIEW MAP"}>
-                    <Text style={styles.buttonText}>
-                        VIEW MAP
-                    </Text>
-                </TouchableOpacity>
+                {/*<TouchableOpacity style={styles.button} onPress={viewMap} title = {"VIEW MAP"}>*/}
+                {/*    <Text style={styles.buttonText}>*/}
+                {/*        VIEW MAP*/}
+                {/*    </Text>*/}
+                {/*</TouchableOpacity>*/}
                 <View style={{flex:0.1}}/>
                 <TouchableOpacity style={styles.button} onPress={viewHistory} title = {"MY HISTORY"}>
                     <Text style={styles.buttonText}>

@@ -226,7 +226,7 @@ export const DeclareComplaint = ({navigation}) => {
             />
             <Text style={styles.subtitle}>IMAGE</Text>
             <TouchableOpacity style={styles.button} onPress = {takeImage}>
-                <Image style={{height: 25, width: 25, marginRight:15}} source={require('../camera-icon.png')}/>
+                <Image style={{height: 25, width: 25, marginRight:15}} source={require('../Assets/camera-icon.png')}/>
                 <Text style={styles.buttonText}>
                     TAKE PICTURE
                 </Text>
