@@ -7,6 +7,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Repository
 public interface ComplaintRepository extends JpaRepository<Complaint,Long> {
 
@@ -17,6 +19,6 @@ public interface ComplaintRepository extends JpaRepository<Complaint,Long> {
     void incrementComplaintResolutionCounter(long complaintId);
 
 
-   /* @Query("select latitude,longitude from Complaint ")
-    public List<ComplaintLocationDTO> getAllComplaintsLocation();*/
+    @Query("select c  from Complaint as c where c.latitude=?1 and c.longitude=?2 ")
+    public Optional<Complaint> getomplaintByLocation(double latitude, double longitude );
 }
