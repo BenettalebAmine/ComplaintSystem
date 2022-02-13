@@ -3,8 +3,37 @@ import {View, Image, StyleSheet, Text} from 'react-native'
 
 export const HistoryElement = (props) => {
 
-    const [type, setType] = useState(props.item.type);
-    const state = props.item.state;
+    const item = {
+        "complaint": {
+            "complaintCounter": 1,
+            "complaintResolutionCounter": 0,
+            "complaintType": 2,
+            "date": 1644792087216,
+            "latitude": 37.4219983,
+            "longitude": -122.084,
+            "status": false
+        },
+        "picture": {
+            "data": "ABCDEF",
+            "date": 1644792087217,
+            "deviceId": "643662880403167d",
+            "status": false
+        }
+    };
+
+
+
+
+    const [type, setType] = useState(props.item.complaint.complaintType===0?'water':(props.item.complaint.complaintType===1?'trash':'electricity'));
+
+    const deduceState = () => {
+        if (!props.item.picture.status) return 'AWAITING APPROVAL';
+        if (!props.item.complaint.status) return 'NOT RESOLVED';
+        if (props.item.complaint.status) return 'RESOLVED';
+        // if (!props.item.picture.status) return 'AWAITING APPROVAL';
+
+    }
+    const state = deduceState();
     const deduceSource = () => {
 
         if (type === 'electricity') return require('../Assets/electricity.png')

@@ -1,13 +1,12 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import DropDownPicker from "react-native-dropdown-picker";
 import {PermissionsAndroid, StyleSheet} from "react-native";
 import GetLocation from "react-native-get-location";
-// import {Camera, useCameraDevices} from "react-native-vision-camera";
-import {View, Text, Button, TouchableOpacity, Image} from "react-native"
+import {View, Text, TouchableOpacity, Image} from "react-native"
 import CheckBox from '@react-native-community/checkbox';
-import {CameraView} from "./CameraView";
 import {Camera} from "../components/Camera";
 import DeviceInfo from "react-native-device-info";
+import ComplaintService, {addComplaint} from "../services/ComplaintService";
 
 export const DeclareComplaint = ({navigation}) => {
 
@@ -175,15 +174,44 @@ export const DeclareComplaint = ({navigation}) => {
 
     const submit = () => {
         //TODO submit
-        console.log("SUBMIT")
-        console.log("Image = ")
-        console.log(image)
-        console.log("GeoLocation = ")
-        console.log(geoLocation)
-        console.log("ID = ")
-        console.log(uniqueId)
-        console.log("Type = ")
-        console.log(value)
+        // console.log("SUBMIT")
+        // console.log("Image = ")
+        // console.log(image)
+        // console.log("GeoLocation = ")
+        // console.log(geoLocation)
+        // console.log("ID = ")
+        // console.log(uniqueId)
+        // console.log("Type = ")
+        // console.log(value)
+
+        const complaint = {
+            status: false,
+            date: Date.now(),
+            complaintCounter: 1,
+            complaintResolutionCounter: 0,
+            complaintType: value==='water'?0:(value==='trash'?1:2),
+            latitude: geoLocation.latitude,
+            longitude: geoLocation.longitude
+        }
+        // console.log(complaint)
+
+        const data = image.base64;
+        const picture = {
+            date: Date.now(),
+            data: data,
+            status: false,
+            deviceId: uniqueId
+        }
+        // console.log(picture)
+
+        const complaintDto = {
+            complaint: complaint,
+            picture: picture
+        }
+        // console.log("DATA = ")
+        // console.log(complaintDto)
+
+        addComplaint(complaintDto);
     }
 
     const takeImage = () => {

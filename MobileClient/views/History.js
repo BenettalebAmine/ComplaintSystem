@@ -2,6 +2,8 @@ import React, {useState} from 'react'
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native'
 import ProgressCircle from 'react-native-progress-circle'
 import {HistoryElement} from "../components/HistoryElement";
+import {getComplaints} from "../services/ComplaintService";
+import * as DeviceInfo from "react-native-device-info";
 
 export const History = ({navigation}) => {
 
@@ -69,24 +71,7 @@ export const History = ({navigation}) => {
     });
 
     const [percentage, setPercentage] = useState(25);
-    const [items, setItems] = useState([
-            {
-                type: 'electricity',
-                state: 'RESOLVED'
-            },
-            {
-                type: 'water',
-                state: 'NOT APPROVED'
-            },
-            {
-                type: 'electricity',
-                state: 'AWAITING APPROVAL'
-            },
-            {
-                type: 'trash',
-                state: 'NOT RESOLVED'
-            }
-        ])
+    const [items, setItems] = useState(getComplaints(DeviceInfo.getUniqueId()))
 
 
     return(
