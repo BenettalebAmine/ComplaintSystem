@@ -21,9 +21,9 @@ export const DeclareComplaint = ({navigation}) => {
     const [value, setValue] = useState(null);
     const [items, setItems] = useState( //TODO import items (use schema)
         [
-            {label: 'Water', value: 'water'},
-            {label: 'Electricity', value: 'electricity'},
-            {label: 'Trash', value: 'trash'}
+            {label: 'EAU', value: 'water'},
+            {label: 'ELECTRICITE', value: 'electricity'},
+            {label: 'DECHETS', value: 'trash'}
         ]
     )
 
@@ -184,9 +184,12 @@ export const DeclareComplaint = ({navigation}) => {
         // console.log("Type = ")
         // console.log(value)
 
+        // console.log(geoLocation)
+
+
         const complaint = {
             status: false,
-            date: Date.now(),
+            date: new Date().toISOString(),
             complaintCounter: 1,
             complaintResolutionCounter: 0,
             complaintType: value==='water'?0:(value==='trash'?1:2),
@@ -197,9 +200,10 @@ export const DeclareComplaint = ({navigation}) => {
 
         const data = image.base64;
         const picture = {
-            date: Date.now(),
+            date: new Date().toISOString(),
             data: data,
             status: false,
+            isChecked: false,
             deviceId: uniqueId
         }
         // console.log(picture)
@@ -208,8 +212,8 @@ export const DeclareComplaint = ({navigation}) => {
             complaint: complaint,
             picture: picture
         }
-        // console.log("DATA = ")
-        // console.log(complaintDto)
+        console.log("DATA = ")
+        console.log(complaintDto)
 
         addComplaint(complaintDto);
     }

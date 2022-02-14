@@ -28,14 +28,28 @@ public class Picture {
 
   @Column private boolean status;
 
+  @Column private boolean isChecked;
+
+  @Column private boolean resolved;
+
   @Column private String deviceId;
 
   public Picture(
-      LocalDateTime date, Complaint complaint, String data, boolean status, String deviceId) {
+      LocalDateTime date, Complaint complaint, String data, boolean status, boolean isChecked, boolean resolved, String deviceId) {
     this.date = date;
     this.complaint = complaint;
     this.data = data;
     this.status = status;
+    this.isChecked = isChecked;
+    this.resolved = resolved;
+    this.deviceId = deviceId;
+  }
+  public Picture(
+      LocalDateTime date, String data, boolean status, boolean isChecked, String deviceId) {
+    this.date = date;
+    this.data = data;
+    this.status = status;
+    this.isChecked = isChecked;
     this.deviceId = deviceId;
   }
 }

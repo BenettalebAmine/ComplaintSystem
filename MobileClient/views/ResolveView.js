@@ -1,11 +1,13 @@
-import React, {useState, useEffect} from 'react'
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native'
-import ProgressCircle from 'react-native-progress-circle'
-import {HistoryElement} from "../components/HistoryElement";
-import {getComplaints} from "../services/ComplaintService";
+import React, {useEffect, useState} from 'react'
+import {View, TouchableOpacity, Text, StyleSheet} from 'react-native'
 import DeviceInfo from "react-native-device-info";
+import {getComplaints} from "../services/ComplaintService";
+import {ResolveElement} from "../components/ResolveElement";
 
-export const History = ({navigation}) => {
+export const ResolveView = ({navigation}) => {
+
+    const [items, setItems] = useState([])
+    const id = DeviceInfo.getUniqueId()
 
     const styles = StyleSheet.create({
         container: {
@@ -70,27 +72,26 @@ export const History = ({navigation}) => {
         }
     });
 
-    const [percentage, setPercentage] = useState(0);
-    const [items, setItems] = useState([])
-    const id = DeviceInfo.getUniqueId()
+    const getValidComplaints = (id) => {
+
+    }
 
     useEffect(()=> {
-        getComplaints(id).then(r=> {
-            console.log("IM HEERE")
-            console.log(r.data)
-            setItems(r.data)
-            let resolved = 0;
-            let total = 0;
-            r.data.map(c=> {
-                if (c.complaint.status) resolved++;
-                total++;
-            })
-            console.log(resolved)
-            if (total>0) setPercentage(resolved/total*100)
+        getComplaints(id).then(r=>{
+            // console.log(r.data.map((d)=>!d.complaint.status&&d.picture.status))
+            setItems(r.data.filter((d)=>(!d.complaint.status&&d.picture.status&&!d.picture.resolved)));
         })
     },[])
 
-    return(
+    const updateList = () => {
+        setItems([])
+        getComplaints(id).then(r=>{
+            // console.log(r.data.map((d)=>!d.complaint.status&&d.picture.status))
+            setItems(r.data.filter((d)=>(!d.complaint.status&&d.picture.status&&!d.picture.resolved)));
+        })
+    }
+
+    return (
         <View style={{margin: 20}}>
             <View >
                 <TouchableOpacity onPress={() => {navigation.goBack()}} style={styles.cancelButton}>
@@ -101,23 +102,9 @@ export const History = ({navigation}) => {
                 </View>
             </View>
             <View style={{alignItems: 'center', padding: 20, marginBottom:30}}>
-                <ProgressCircle
-                    percent={percentage}
-                    radius={100}
-                    color={'#4864ba'}
-                    borderWidth={7}
-                    bgColor={'#f5f5f5'}
-                >
-                    <Text>
-                        {percentage} %
-                    </Text>
-                    <Text>
-                        Resolved
-                    </Text>
-                </ProgressCircle>
             </View>
             {items.map(item=> {
-                return <HistoryElement item={item}/>
+                return <ResolveElement item={item} updateList={updateList}/>
             })}
         </View>
     )

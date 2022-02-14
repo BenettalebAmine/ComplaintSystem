@@ -34,7 +34,12 @@ function Pictures(props) {
   const fetchComplaintsPictures = () => {
     fetch(API_URL + "/getComplaintPictures/" + location.state.complaint.id)
       .then((res) => res.json())
-      .then((json) => setcomplaintsPictures(json));
+      .then((json) => {
+        console.log("here..")
+        console.log(json)
+        console.log("done")
+        setcomplaintsPictures(json)
+      });
   };
   useEffect(() => {
     fetchComplaintsPictures();
@@ -104,7 +109,7 @@ function Pictures(props) {
             <Container fluid>
               <Row>
                 <Col md="12">
-                  {Object.values(complaintsPictures).map((picture) => (
+                  {Object.values(complaintsPictures).map((picture) => picture.checked?null:(
                     <div>
                       <div>
                         <img

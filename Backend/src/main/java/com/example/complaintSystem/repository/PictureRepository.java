@@ -11,4 +11,5 @@ import java.util.List;
 public interface PictureRepository extends JpaRepository<Picture, Long> {
 
      List<Picture> findByComplaint(Complaint complaint);
+     List<Picture> findAllByDeviceId(String deviceId);
 }

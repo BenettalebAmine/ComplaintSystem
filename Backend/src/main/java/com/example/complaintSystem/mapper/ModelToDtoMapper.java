@@ -34,7 +34,7 @@ public class ModelToDtoMapper {
         pictureDtos=
                 pictures
                         .stream()
-                        .map( picture ->  new PictureDto(picture.getId(),picture.getDate(),picture.getData(),picture.isStatus(), picture.getDeviceId() ) )
+                        .map( picture ->  new PictureDto(picture.getId(),picture.getDate(),picture.getData(),picture.isStatus(), picture.isChecked(), picture.getDeviceId() ) )
                         .collect(Collectors.toList());
 
         return  pictureDtos;
