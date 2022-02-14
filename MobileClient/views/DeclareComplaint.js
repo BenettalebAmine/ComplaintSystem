@@ -216,6 +216,9 @@ export const DeclareComplaint = ({navigation}) => {
         console.log(complaintDto)
 
         addComplaint(complaintDto);
+        alert("Complain saved!")
+        navigation.navigate('MainMenu');
+
     }
 
     const takeImage = () => {
