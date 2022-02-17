@@ -100,7 +100,7 @@ function User() {
                         <label>About Me</label>
                         <Form.Control
                           cols="80"
-                          defaultValue="Loune dl pussy dl bitch diali be7al Raibi"
+                          defaultValue="rnd "
                           placeholder="Here can be your description"
                           rows="4"
                           as="textarea"
@@ -139,12 +139,12 @@ function User() {
                       className="avatar border-gray"
                       src={require("assets/img/faces/face-3.jpg").default}
                     ></img>
-                    <h5 className="title">Mike Andrew</h5>
+                    <h5 className="title">{getUserName()}</h5>
                   </a>
-                  <p className="description">michael24</p>
+                  <p className="description"></p>
                 </div>
                 <p className="description text-center">
-                  "Loune dl pussy dl bitch diali be7al raibi  "
+                  ""
                 </p>
               </Card.Body>
               <hr></hr>
