@@ -39,9 +39,10 @@ export const MainMenu = ({navigation}) => {
         navigation.navigate('DeclareComplaint');
     }
 
-    const viewMap = () => {
+    const viewResolve = () => {
         //TODO go to map page
-        console.log("MAP")
+        // console.log("MAP")
+        navigation.navigate('Resolution')
     }
 
     const viewHistory = () => {
@@ -63,11 +64,11 @@ export const MainMenu = ({navigation}) => {
                     </Text>
                 </TouchableOpacity>
                 <View style={{flex:0.1}}/>
-                {/*<TouchableOpacity style={styles.button} onPress={viewMap} title = {"VIEW MAP"}>*/}
-                {/*    <Text style={styles.buttonText}>*/}
-                {/*        VIEW MAP*/}
-                {/*    </Text>*/}
-                {/*</TouchableOpacity>*/}
+                <TouchableOpacity style={styles.button} onPress={viewResolve} title = {"VIEW MAP"}>
+                    <Text style={styles.buttonText}>
+                        RESOLVE COMPLAINT
+                    </Text>
+                </TouchableOpacity>
                 <View style={{flex:0.1}}/>
                 <TouchableOpacity style={styles.button} onPress={viewHistory} title = {"MY HISTORY"}>
                     <Text style={styles.buttonText}>

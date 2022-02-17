@@ -1,21 +1,13 @@
 import React, {useEffect, useState} from "react";
-import {View, Image, StyleSheet, Text} from 'react-native'
+import {View, Image, StyleSheet, Text, TouchableOpacity} from 'react-native'
+import {resolveComplaint, resolvePicture} from "../services/ComplaintService";
 
-export const HistoryElement = (props) => {
+export const ResolveElement = (props) => {
 
 
     // const [type, setType] = useState(props.item.complaint.complaintType===0?'water':(props.item.complaint.complaintType===1?'trash':'electricity'));
     const [type, setType] = useState(props.item.complaint.complaintType);
 
-    const deduceState = () => {
-        if (props.item.complaint.status) return 'RESOLVED';
-        if (!props.item.picture.checked) return 'AWAITING APPROVAL';
-        if (!props.item.picture.status) return 'NOT APPROVED';
-        if (!props.item.complaint.status) return 'NOT RESOLVED';
-        // if (!props.item.picture.status) return 'AWAITING APPROVAL';
-
-    }
-    const state = deduceState();
     const deduceSource = () => {
         console.log(props.item.complaint.complaintType)
         if (type === 'ELECTRICITE') return require('../Assets/electricity.png')
@@ -26,14 +18,14 @@ export const HistoryElement = (props) => {
 
     const imageSource = deduceSource();
 
-    const deduceColor = () => {
-        if (state === 'RESOLVED') return '#00a702'
-        if (state === 'NOT RESOLVED') return '#ff0000'
-        if (state === 'AWAITING APPROVAL') return '#0066ff'
-        if (state === 'NOT APPROVED') return '#000000'
+    const resolve = () => {
+        const complaintId = props.item.complaint.id
+        const pictureId = props.item.picture.id
+        resolveComplaint(complaintId).catch(err=>log(err));
+        resolvePicture(pictureId).then(r=> {
+            props.updateList()
+        }).catch(err=>log(err));
     }
-
-    const textColour = deduceColor();
 
     const styles = StyleSheet.create({
         container: {
@@ -57,9 +49,11 @@ export const HistoryElement = (props) => {
             <Text style={{color: 'black'}}>
                 {type}
             </Text>
-            <Text style={{marginLeft: 'auto', color: textColour}}>
-                {state}
-            </Text>
+            <TouchableOpacity onPress={resolve} style={{marginLeft: 'auto', backgroundColor: 'rgba(18,191,1,0.16)', borderWidth: 1}}>
+                <Text>
+                    Mark as resolved
+                </Text>
+            </TouchableOpacity>
         </View>
     )
 }

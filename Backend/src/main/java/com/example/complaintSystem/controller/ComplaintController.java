@@ -53,4 +53,10 @@ public class ComplaintController {
 
         return  ResponseEntity.ok().body(complaintService.getComplaint(complaintId)) ;
     }
+    @GetMapping("/getComplaintsByDeviceId/{deviceId}")
+    public ResponseEntity<List<ComplaintDTO>> getComplaintsByDeviceId(@PathVariable("deviceId") String deviceId) {
+
+        return ResponseEntity.ok().body(complaintService.getComplaintsByDeviceId(deviceId)) ;
+    }
+
 }

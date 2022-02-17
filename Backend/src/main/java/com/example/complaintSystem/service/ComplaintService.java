@@ -7,8 +7,10 @@ import com.example.complaintSystem.repository.ComplaintRepository;
 import com.example.complaintSystem.dto.ComplaintLocationDTO;
 import com.example.complaintSystem.mapper.ModelToDtoMapper;
 import com.example.complaintSystem.repository.PictureRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,8 +18,8 @@ import java.util.Optional;
 public class ComplaintService {
 
 
-
     ComplaintRepository complaintRepository;
+    @Autowired
     PictureRepository pictureRepository;
 
     protected Optional<Complaint> findById(long complaintId){ return  complaintRepository.findById(complaintId);}
@@ -32,29 +34,38 @@ public class ComplaintService {
 
 
         Optional<Complaint> optionalComplaint= complaintRepository.getomplaintByLocation(complaintDTO.getComplaint().getLatitude(),complaintDTO.getComplaint().getLongitude());
+//        System.out.println(optionalComplaint.get());
 
         Picture pic=complaintDTO.getPicture();;
+
+        System.out.println(pic);
         Complaint c=complaintDTO.getComplaint();
         if(optionalComplaint.isEmpty()){
 
-            complaintRepository.save(c);
+            c = complaintRepository.save(c);
             pic.setComplaint(c);
             pictureRepository.save(pic);
             return;
         }
-            pic.setComplaint(c);
-            pictureRepository.save(pic);
+//        complaintRepository.incrementComplaintCounter(optionalComplaint.get().getId());
+        pic.setComplaint(optionalComplaint.get());
+        pictureRepository.save(pic);
 
     }
 
     public void updateComplaint(long complaintId){
 
         complaintRepository.incrementComplaintResolutionCounter(complaintId);
+        Complaint complaint = complaintRepository.getById(complaintId);
+        if(complaint.getComplaintCounter()==0) return;
+        complaint.setStatus(complaint.getComplaintResolutionCounter() / (float) complaint.getComplaintCounter() >= 0.5);
+        System.out.println(complaint.isStatus());
+        complaintRepository.save(complaint);
     }
 
     public List<ComplaintLocationDTO> getAllComplaintsLocation() {
 
-        return ModelToDtoMapper.mapAllToComplaintLocationDTO(complaintRepository.findAll()) ;
+        return ModelToDtoMapper.mapAllToComplaintLocationDTO(complaintRepository.findAllValid()) ;
     }
 
 
@@ -63,5 +74,14 @@ public class ComplaintService {
     }
     public Complaint getComplaint(long complaintId) {
         return complaintRepository.findById(complaintId).orElse(null);
+    }
+
+    public List<ComplaintDTO> getComplaintsByDeviceId(String deviceId) {
+        List<Picture> pictures = pictureRepository.findAllByDeviceId(deviceId);
+        List<ComplaintDTO> result = new ArrayList<>();
+        for (Picture picture: pictures) {
+            result.add(new ComplaintDTO(picture.getComplaint(), picture));
+        }
+        return result;
     }
 }

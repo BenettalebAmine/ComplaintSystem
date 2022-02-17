@@ -33,4 +33,10 @@ public class PictureController {
         return ResponseEntity.ok().body( picturesService.getPicturesCount());
 
     }
+    @PutMapping("/resolvePicture/{pictureId}")
+    public void resolvePicture(@PathVariable("pictureId") long pictureId) {
+
+        picturesService.resolvePicture(pictureId);
+
+    }
     }

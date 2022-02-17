@@ -6,6 +6,8 @@ import {DeclareComplaint} from "../views/DeclareComplaint";
 import {CameraView} from "../views/CameraView";
 import {Camera} from "../components/Camera";
 import {History} from "../views/History";
+import {ResolveElement} from "../components/ResolveElement";
+import {ResolveView} from "../views/ResolveView";
 
 export const Navigation = () => {
 
@@ -34,6 +36,11 @@ export const Navigation = () => {
                     name={"History"}
                     component={History}
                     options={{title: "History", headerShown: false}}
+                />
+                <Stack.Screen
+                    name={"Resolution"}
+                    component={ResolveView}
+                    options={{title: "Resolution", headerShown: false}}
                 />
             </Stack.Navigator>
         </NavigationContainer>

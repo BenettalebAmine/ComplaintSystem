@@ -1,13 +1,12 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import DropDownPicker from "react-native-dropdown-picker";
 import {PermissionsAndroid, StyleSheet} from "react-native";
 import GetLocation from "react-native-get-location";
-// import {Camera, useCameraDevices} from "react-native-vision-camera";
-import {View, Text, Button, TouchableOpacity, Image} from "react-native"
+import {View, Text, TouchableOpacity, Image} from "react-native"
 import CheckBox from '@react-native-community/checkbox';
-import {CameraView} from "./CameraView";
 import {Camera} from "../components/Camera";
 import DeviceInfo from "react-native-device-info";
+import ComplaintService, {addComplaint} from "../services/ComplaintService";
 
 export const DeclareComplaint = ({navigation}) => {
 
@@ -22,9 +21,9 @@ export const DeclareComplaint = ({navigation}) => {
     const [value, setValue] = useState(null);
     const [items, setItems] = useState( //TODO import items (use schema)
         [
-            {label: 'Water', value: 'water'},
-            {label: 'Electricity', value: 'electricity'},
-            {label: 'Trash', value: 'trash'}
+            {label: 'EAU', value: 'water'},
+            {label: 'ELECTRICITE', value: 'electricity'},
+            {label: 'DECHETS', value: 'trash'}
         ]
     )
 
@@ -175,15 +174,51 @@ export const DeclareComplaint = ({navigation}) => {
 
     const submit = () => {
         //TODO submit
-        console.log("SUBMIT")
-        console.log("Image = ")
-        console.log(image)
-        console.log("GeoLocation = ")
-        console.log(geoLocation)
-        console.log("ID = ")
-        console.log(uniqueId)
-        console.log("Type = ")
-        console.log(value)
+        // console.log("SUBMIT")
+        // console.log("Image = ")
+        // console.log(image)
+        // console.log("GeoLocation = ")
+        // console.log(geoLocation)
+        // console.log("ID = ")
+        // console.log(uniqueId)
+        // console.log("Type = ")
+        // console.log(value)
+
+        // console.log(geoLocation)
+
+
+        const complaint = {
+            status: false,
+            date: new Date().toISOString(),
+            complaintCounter: 1,
+            complaintResolutionCounter: 0,
+            complaintType: value==='water'?0:(value==='trash'?1:2),
+            latitude: geoLocation.latitude,
+            longitude: geoLocation.longitude
+        }
+        // console.log(complaint)
+
+        const data = image.base64;
+        const picture = {
+            date: new Date().toISOString(),
+            data: data,
+            status: false,
+            isChecked: false,
+            deviceId: uniqueId
+        }
+        // console.log(picture)
+
+        const complaintDto = {
+            complaint: complaint,
+            picture: picture
+        }
+        console.log("DATA = ")
+        console.log(complaintDto)
+
+        addComplaint(complaintDto);
+        alert("Complain saved!")
+        navigation.navigate('MainMenu');
+
     }
 
     const takeImage = () => {

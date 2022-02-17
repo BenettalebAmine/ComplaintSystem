@@ -1,17 +1,21 @@
 import axios from 'axios';
 
-const API_BASED_URL = "http://localhost:8080";
+const API_BASED_URL = "http://10.0.2.2:8088";
 
-export default function ComplaintService() {
 
-    //for adding a complaint
-    const addComplaint = (complaint) => {
-        return axios.post(API_BASED_URL + "/addComplaint", complaint);
-    }
-
-    //for getting all complaints
-    const getComplaints = () => {
-        return axios.get(API_BASED_URL + "/getAllComplaints");
-    }
-
+export const addComplaint = (complaint) => {
+    return axios.post(API_BASED_URL + "/addComplaint", complaint);
 }
+
+export const getComplaints = (id) => {
+    return axios.get(API_BASED_URL + "/getComplaintsByDeviceId/" + id);
+}
+
+export const resolveComplaint = (id) => {
+    return axios.put(API_BASED_URL + "/updateComplaint/" + id)
+}
+
+export const resolvePicture = (id) => {
+    return axios.put(API_BASED_URL + "/resolvePicture/" + id)
+}
+
